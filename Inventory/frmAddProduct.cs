@@ -62,7 +62,7 @@ namespace Inventory
             {
                 if (!Regex.IsMatch(name, @"^[a-zA-Z]+$"))
                 {
-                    throw new StringFormatException("Invalid product name (letters only).");
+                    throw new StringFormatException("Must contain letters only.");
                 }
                 return name;
             }
@@ -78,7 +78,7 @@ namespace Inventory
             {
                 if (!Regex.IsMatch(qty, @"^[0-9]"))
                 {
-                    throw new NumberFormatException("Invalid quantity format (must be numeric).");
+                    throw new NumberFormatException("Must be numeric.");
                 }
                 return Convert.ToInt32(qty);
             }
@@ -95,7 +95,7 @@ namespace Inventory
             {
                 if (!Regex.IsMatch(price, @"^(\d*\.)?\d+$"))
                 {
-                    throw new CurrencyFormatException("Invalid price format (must be a valid decimal).");
+                    throw new CurrencyFormatException("Must be a valid decimal.");
                 }
                 return Convert.ToDouble(price);
             }
@@ -123,15 +123,15 @@ namespace Inventory
             }
             catch (StringFormatException ex)
             {
-                MessageBox.Show(ex.Message, "Invalid product name (letters only).", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Invalid Product Name Format", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (NumberFormatException ex)
             {
-                MessageBox.Show(ex.Message, "Invalid quantity format (must be a valid integer).", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Invalid Quantity Format", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (CurrencyFormatException ex)
             {
-                MessageBox.Show(ex.Message, "Invalid selling price format (must be a valid decimal).", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Invalid Selling Price Format", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
